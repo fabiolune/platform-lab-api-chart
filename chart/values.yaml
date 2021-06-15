@@ -16,8 +16,6 @@ component:
   # integer (0-100) defining the failure rate in read operations from redis
   flakiness: 0
 
-  registryAuthenticationSecret: ''
-
   vault:
     
     # required for vault policy matching, i.e. poc-persistence
