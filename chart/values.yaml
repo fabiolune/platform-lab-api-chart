@@ -1,0 +1,41 @@
+component:
+  replicas: 1
+
+  canary:
+    enabled: true
+    errorRate:
+      thresholdRange: 10
+    latency:
+      thresholdRange: 500
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 10
+
+  # integer (0-100) defining the failure rate in read operations from redis
+  flakiness: 0
+
+  registryAuthenticationSecret: ''
+
+  vault:
+    
+    # required for vault policy matching, i.e. poc-persistence
+    role: 'poc-api'
+    
+    # secret containing the api key for authorization
+    authSecret: 'poc/network/api'
+    
+    # secret containing the redis authentication parameter, i.e. poc/persistence/redis
+    redisSecret: 'poc/persistence/redis'
+    # this is required for authentication against vault, i.e. poc-redis
+  
+  serviceAccount: 'poc-api'
+  
+  resources:
+    requests:
+      memory: 160Mi
+      cpu: 50m
+    limits:
+      memory: 300Mi
+      cpu: 400m
