@@ -6,7 +6,7 @@ env:
   HELM_VERSION_TO_INSTALL: 3.5.0
 
 jobs:
-  lint-pack-push:
+  helm-validate:
     runs-on: ubuntu-latest
 
     steps:
