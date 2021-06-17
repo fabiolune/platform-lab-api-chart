@@ -29,12 +29,13 @@ spec:
     threshold: 10
     # max traffic percentage routed to canary
     # percentage (0-100)
-    maxWeight: 70
+    maxWeight: 50
     # canary increment step
     # percentage (0-100)
     stepWeight: 5
     # Istio Prometheus checks
     metrics:
+      {{ if .Values.component.canary.errorRate.enabled }}
       - name: error-rate
         templateRef:
           name: error-rate
@@ -42,6 +43,8 @@ spec:
         thresholdRange:
           max: {{ .Values.component.canary.errorRate.thresholdRange }}
         interval: 30s
+      {{ end }}
+      {{ if .Values.component.canary.latency.enabled }}
       - name: latency
         templateRef:
           name: latency
@@ -49,6 +52,7 @@ spec:
         thresholdRange:
           max: {{ .Values.component.canary.latency.thresholdRange }}
         interval: 30s
+      {{ end }}
     # tests (optional)
     # webhooks:
     #   - name: conformance-test

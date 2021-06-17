@@ -4,8 +4,10 @@ component:
   canary:
     enabled: true
     errorRate:
+      enabled: true
       thresholdRange: 10
     latency:
+      enabled: false
       thresholdRange: 500
 
   autoscaling:
