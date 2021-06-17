@@ -5,5 +5,5 @@ description: Helm chart for Api component of Platform Lab POC
 
 type: application
 
-version: 0.1.0
+version: 0.2.0
 appVersion: "0.1.0-alpha0011"
